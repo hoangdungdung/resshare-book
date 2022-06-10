@@ -26,16 +26,11 @@ compileJava.dependsOn processResources
  
 
 //create a single Jar with all dependencies
- jar {
-    manifest {
-        attributes "Main-Class": " com.resshare.springboot.ResshareBookApp"
-    }
-
-    from {
-        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
-    }
+ 
+jar {
+    baseName = 'resshare-book'
+    version =  version
 }
-
  
 repositories {
     mavenCentral()
