@@ -32,7 +32,7 @@ compileJava.dependsOn processResources
     }
 
     from {
-        configurations.implementation.collect { it.isDirectory() ? it : zipTree(it) }
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
 
