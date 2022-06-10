@@ -14,10 +14,23 @@ jar {
 
 repositories {
 	mavenCentral()
+	maven.url "http://repo.spring.io/snapshot"
+       
+    mavenLocal()
+    maven { url "http://repo.spring.io/libs-snapshot" }
+    maven { url "http://repo.spring.io/milestone" }
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+     flatDir {
+        dirs 'lib'
+    }
 }
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	
+	implementation 'org.springframework.boot:spring-boot-devtools'
+	
+	
 	   implementation  fileTree(include: ['*.jar'], dir: 'lib')
   // implementation   files('lib/resshare-common.jar')
    // implementation  files('lib/resshare-core.jar')
