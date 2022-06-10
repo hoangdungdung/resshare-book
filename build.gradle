@@ -72,8 +72,9 @@ dependencies {
  // compile files('lib/resshare-core.jar','resshare-common.jar') 
    //compile(files("/lib/resshare-core.jar"))
   // compile(files("/lib/resshare-common.jar"))
-   compile  files('lib/resshare-common.jar')
-    compile  files('lib/resshare-core.jar')
+   implementation  fileTree(include: ['*.jar'], dir: 'lib')
+  // compile   files('lib/resshare-common.jar')
+   // compile  files('lib/resshare-core.jar')
   
  
 
