@@ -62,8 +62,9 @@ dependencies {
 //compile group: 'com.github.detro.ghostdriver', name: 'phantomjsdriver', version: '1.1.0'
      
 
- 
-    compile fileTree(dir: 'lib', include: ['*.jar'])
+  compile files('lib/resshare-common.jar')
+   compile files('lib/resshare-core.jar')
+   // compile fileTree(dir: 'lib', include: ['*.jar'])
  
 
     //compile("org.springframework.boot:spring-boot-devtools")
