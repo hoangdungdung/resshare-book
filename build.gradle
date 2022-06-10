@@ -48,8 +48,7 @@ repositories {
     }
 }
 
-
-
+ 
 dependencies {
 //< 4.5.8) of Apache http client.
  // Firebase Java SDK
@@ -68,8 +67,14 @@ dependencies {
  // compile files('../lib/resshare-common.jar')
  //  compile files('../lib/resshare-core.jar')
    // compile fileTree(dir: 'lib', include: ['*.jar'])
-   add('compile', fileTree(dir: "lib", include: "*.jar"))
-  // compile files('lib/resshare-core.jar','resshare-common.jar') 
+ //  add('compile', fileTree(dir: "lib", include: "*.jar"))
+ // compile files('lib/resshare-core.jar','resshare-common.jar') 
+ // compile files('lib/resshare-core.jar','resshare-common.jar') 
+   //compile(files("/lib/resshare-core.jar"))
+  // compile(files("/lib/resshare-common.jar"))
+   compile  files('lib/resshare-common.jar')
+    compile  files('lib/resshare-core.jar')
+  
  
 
     //compile("org.springframework.boot:spring-boot-devtools")
