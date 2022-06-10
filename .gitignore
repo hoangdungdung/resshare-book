@@ -1,0 +1,14 @@
+service-account.json
+.apt_generated/
+.gradle/
+.metadata/
+.settings/
+bin/
+build/
+target/
+.classpath
+.project
+.factorypath
+*.iml
+.idea
+out
