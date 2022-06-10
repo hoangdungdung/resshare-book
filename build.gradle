@@ -17,7 +17,7 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
-apply plugin: 'org.springframework.boot'
+//apply plugin: 'org.springframework.boot'
 
 version = '2.17.1-SNAPSHOT'
 
@@ -66,13 +66,13 @@ dependencies {
     compile fileTree(dir: 'lib', include: ['*.jar'])
  
 
-    compile("org.springframework.boot:spring-boot-devtools")
-    compile("org.springframework.boot:spring-boot-starter-web")
+    //compile("org.springframework.boot:spring-boot-devtools")
+   // compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-jdbc")
     compile("org.seasar.doma.boot:doma-spring-boot-starter:1.1.0")
-    compile("com.h2database:h2")
-    testCompile("junit:junit")
-    testCompile("org.springframework.boot:spring-boot-starter-test")
+ //   compile("com.h2database:h2")
+  //  testCompile("junit:junit")
+   // testCompile("org.springframework.boot:spring-boot-starter-test")
         // Firebase Java SDK
     compile 'com.google.firebase:firebase-admin:5.3.1'
     compile 'com.squareup.okhttp:okhttp:2.5.0'
