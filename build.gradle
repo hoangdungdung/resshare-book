@@ -60,12 +60,16 @@ dependencies {
  
 // https://mvnrepository.com/artifact/com.github.detro.ghostdriver/phantomjsdriver
 //compile group: 'com.github.detro.ghostdriver', name: 'phantomjsdriver', version: '1.1.0'
-      compile(files("lib/resshare-common.jar"))
-       compile(files("lib/resshare-core.jar"))
 
- // compile files('lib/resshare-common.jar')
- //  compile files('lib/resshare-core.jar')
+//implementation fileTree(include: ['*.jar'], dir: 'lib')
+      //compile(files("/lib/resshare-common.jar"))
+     //  compile(files("/lib/resshare-core.jar"))
+
+ // compile files('../lib/resshare-common.jar')
+ //  compile files('../lib/resshare-core.jar')
    // compile fileTree(dir: 'lib', include: ['*.jar'])
+   add('compile', fileTree(dir: "lib", include: "*.jar"))
+  // compile files('lib/resshare-core.jar','resshare-common.jar') 
  
 
     //compile("org.springframework.boot:spring-boot-devtools")
