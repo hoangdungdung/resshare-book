@@ -1,222 +1,131 @@
 buildscript {
-  repositories {
-    maven {
-      url "https://plugins.gradle.org/m2/"
+    ext {
+        springBootVersion = '1.5.4.RELEASE'
     }
-  }
-  dependencies {
-    classpath "org.springframework.boot:spring-boot-gradle-plugin:2.7.0"
-  }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+ 
+     
 }
+
 
 apply plugin: 'java'
- 
-apply plugin: "org.springframework.boot"
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
 
+version = '2.17.1-SNAPSHOT'
 
- 
- 
+processResources.destinationDir = compileJava.destinationDir
+compileJava.dependsOn processResources
  
 
- 
- version = '2.17.1-SNAPSHOT'
- 
-jar {
-    baseName = 'resshare-book'
-    version =  version
-}
+//create a single Jar with all dependencies
+ jar {
+    manifest {
+        attributes "Main-Class": " com.resshare.springboot.ResshareBookApp"
+    }
 
-repositories {
-	mavenCentral()
-	
-
-     flatDir {
-        dirs 'lib'
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
 
-dependencies {
-implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.7.0'
  
- 
-	
-	
-	   implementation  fileTree(include: ['*.jar'], dir: 'lib')
-  // implementation   files('lib/resshare-common.jar')
-   // implementation  files('lib/resshare-core.jar')
-  
- 
-
-    //implementation("org.springframework.boot:spring-boot-devtools")
-   // implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("org.springframework.boot:spring-boot-starter-jdbc")
-    implementation("org.seasar.doma.boot:doma-spring-boot-starter:1.1.0")
- //   implementation("com.h2database:h2")
-  //  testimplementation("junit:junit")
-   // testimplementation("org.springframework.boot:spring-boot-starter-test")
-        // Firebase Java SDK
-    implementation 'com.google.firebase:firebase-admin:5.3.1'
-    implementation 'com.squareup.okhttp:okhttp:2.5.0'
-	implementation 'org.json:json:20171018'  
-	
- 
-    implementation 'com.squareup.okhttp:okhttp:2.5.0'
-	implementation 'org.json:json:20171018'  
-	
-	implementation 'io.swagger:swagger-annotations:1.5.8'
-
-    implementation 'com.squareup.okhttp:okhttp:2.7.5'
-    implementation 'com.squareup.okhttp:logging-interceptor:2.7.5'
-
- 
-	implementation 'org.json:json:20171018' 
-	
-	
-	 implementation 'io.swagger:swagger-annotations:1.5.8'
-
-    implementation 'com.squareup.okhttp:okhttp:2.7.5'
-    implementation 'com.squareup.okhttp:logging-interceptor:2.7.5'
-    	// https://mvnrepository.com/artifact/com.pusher/pusher-http-java
-implementation group: 'com.pusher', name: 'pusher-http-java', version: '1.0.0'
-
-//implementation group: 'com.github.alexdlaird', name: 'java8-ngrok', version: '1.4.4'
- 
-
-// https://mvnrepository.com/artifact/com.github.alexdlaird/java-ngrok
-//implementation group: 'com.github.alexdlaird', name: 'java-ngrok', version: '1.5.2'
-// https://mvnrepository.com/artifact/com.github.alexdlaird/java-ngrok
-// https://mvnrepository.com/artifact/com.github.alexdlaird/java8-ngrok
-implementation group: 'com.github.alexdlaird', name: 'java8-ngrok', version: '1.4.3'
-
-
-
-
-
-
-implementation 'org.openjdk.jol:jol-core:0.14'
-// https://mvnrepository.com/artifact/io.github.kilmajster/ngrok-spring-boot-starter
- 
-implementation('io.github.kilmajster:ngrok-spring-boot-starter:0.3.7')
-// https://mvnrepository.com/artifact/commons-codec/commons-codec
-// https://mvnrepository.com/artifact/commons-codec/commons-codec
-implementation group: 'commons-codec', name: 'commons-codec', version: '1.15'
-
-// https://mvnrepository.com/artifact/org.jsoup/jsoup
-implementation group: 'org.jsoup', name: 'jsoup', version: '1.13.1'
-
-// https://mvnrepository.com/artifact/com.codeborne/phantomjsdriver
-implementation group: 'com.codeborne', name: 'phantomjsdriver', version: '1.4.1'
-
-    
-   // implementation 'com.squareup.okhttp:okhttp:2.5.0'
-	implementation 'org.json:json:20171018'
-	// https://mvnrepository.com/artifact/org.jboss.shrinkwrap.resolver/shrinkwrap-resolver-api-maven-embedded
-implementation group: 'org.jboss.shrinkwrap.resolver', name: 'shrinkwrap-resolver-api-maven-embedded', version: '3.1.4'
-	
-// https://mvnrepository.com/artifact/software.amazon.awssdk/rekognition
-//implementation group: 'software.amazon.awssdk', name: 'rekognition', version: '2.17.196'
-// https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-rekognition
-implementation group: 'com.amazonaws', name: 'aws-java-sdk-rekognition', version: '1.12.226'
-    
-    // https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
- implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13'
-     implementation 'com.google.firebase:firebase-admin:5.3.1'
-    implementation 'com.squareup.okhttp:okhttp:2.5.0'
-	implementation 'org.json:json:20171018'  
-	
- 
-    implementation 'com.squareup.okhttp:okhttp:2.5.0'
-	implementation 'org.json:json:20171018'  
-	
-	implementation 'io.swagger:swagger-annotations:1.5.8'
-
-    implementation 'com.squareup.okhttp:okhttp:2.7.5'
-    implementation 'com.squareup.okhttp:logging-interceptor:2.7.5'
-
- 
-	implementation 'org.json:json:20171018' 
-	
-	
-	 implementation 'io.swagger:swagger-annotations:1.5.8'
-
-    implementation 'com.squareup.okhttp:okhttp:2.7.5'
-    implementation 'com.squareup.okhttp:logging-interceptor:2.7.5'
-    	// https://mvnrepository.com/artifact/com.pusher/pusher-http-java
-implementation group: 'com.pusher', name: 'pusher-http-java', version: '1.0.0'
-
-//implementation group: 'com.github.alexdlaird', name: 'java8-ngrok', version: '1.4.4'
- 
-
-// https://mvnrepository.com/artifact/com.github.alexdlaird/java-ngrok
-//implementation group: 'com.github.alexdlaird', name: 'java-ngrok', version: '1.5.2'
-// https://mvnrepository.com/artifact/com.github.alexdlaird/java-ngrok
-// https://mvnrepository.com/artifact/com.github.alexdlaird/java8-ngrok
-implementation group: 'com.github.alexdlaird', name: 'java8-ngrok', version: '1.4.3'
-
-
-
-
-
-
-implementation 'org.openjdk.jol:jol-core:0.14'
-// https://mvnrepository.com/artifact/io.github.kilmajster/ngrok-spring-boot-starter
- 
-implementation('io.github.kilmajster:ngrok-spring-boot-starter:0.3.7')
-// https://mvnrepository.com/artifact/commons-codec/commons-codec
-// https://mvnrepository.com/artifact/commons-codec/commons-codec
-implementation group: 'commons-codec', name: 'commons-codec', version: '1.15'
-
-// https://mvnrepository.com/artifact/org.jsoup/jsoup
-implementation group: 'org.jsoup', name: 'jsoup', version: '1.13.1'
-
-// https://mvnrepository.com/artifact/com.codeborne/phantomjsdriver
-implementation group: 'com.codeborne', name: 'phantomjsdriver', version: '1.4.1'
-
-    
-   // implementation 'com.squareup.okhttp:okhttp:2.5.0'
-	implementation 'org.json:json:20171018'
-	// https://mvnrepository.com/artifact/org.jboss.shrinkwrap.resolver/shrinkwrap-resolver-api-maven-embedded
-implementation group: 'org.jboss.shrinkwrap.resolver', name: 'shrinkwrap-resolver-api-maven-embedded', version: '3.1.4'
-	
-// https://mvnrepository.com/artifact/software.amazon.awssdk/rekognition
-//implementation group: 'software.amazon.awssdk', name: 'rekognition', version: '2.17.196'
-// https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-rekognition
-implementation group: 'com.amazonaws', name: 'aws-java-sdk-rekognition', version: '1.12.226'
-    
-    // https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
- implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13'
-    implementation 'com.squareup.okhttp:okhttp:2.5.0'
-	implementation 'org.json:json:20171018'  
-	
-	implementation 'io.swagger:swagger-annotations:1.5.8'
-
-    implementation 'com.squareup.okhttp:okhttp:2.7.5'
-    implementation 'com.squareup.okhttp:logging-interceptor:2.7.5'
-    
-    
-   // implementation 'com.squareup.okhttp:okhttp:2.5.0'
-	implementation 'org.json:json:20171018' 
-	
-	
-	 implementation 'io.swagger:swagger-annotations:1.5.8'
-
-    implementation 'com.squareup.okhttp:okhttp:2.7.5'
-    implementation 'com.squareup.okhttp:logging-interceptor:2.7.5'
-    	// https://mvnrepository.com/artifact/com.pusher/pusher-http-java
-implementation group: 'com.pusher', name: 'pusher-http-java', version: '1.0.0'
-
-implementation 'org.openjdk.jol:jol-core:0.14'
-    
-   // implementation 'com.squareup.okhttp:okhttp:2.5.0'
-	implementation 'org.json:json:20171018'
-	// https://mvnrepository.com/artifact/org.jboss.shrinkwrap.resolver/shrinkwrap-resolver-api-maven-embedded
-implementation group: 'org.jboss.shrinkwrap.resolver', name: 'shrinkwrap-resolver-api-maven-embedded', version: '3.1.4'
-
-
-//public class FileUploaderClient {
-implementation group: 'org.apache.httpcomponents', name: 'httpmime', version: '4.3.1'
-	 
+repositories {
+    mavenCentral()
+    mavenLocal()
+    maven { url "http://repo.spring.io/libs-snapshot" }
+    maven { url "http://repo.spring.io/milestone" }
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
 }
+
+
+
+dependencies {
+//< 4.5.8) of Apache http client.
+ // Firebase Java SDK
+   //  compile 'com.google.firebase:firebase-admin:5.3.1'
+   //  compile 'org.jsoup:jsoup:1.12.1'
+     // https://mvnrepository.com/artifact/com.github.detro.ghostdriver/phantomjsdriver
+// https://mvnrepository.com/artifact/com.github.detro.ghostdriver/phantomjsdriver
  
+// https://mvnrepository.com/artifact/com.github.detro.ghostdriver/phantomjsdriver
+//compile group: 'com.github.detro.ghostdriver', name: 'phantomjsdriver', version: '1.1.0'
+     
+
+
+    compile("org.springframework.boot:spring-boot-devtools")
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-jdbc")
+    compile("org.seasar.doma.boot:doma-spring-boot-starter:1.1.0")
+    compile("com.h2database:h2")
+    
  
 
+    compile 'com.squareup.okhttp:okhttp:2.5.0'
+	compile 'org.json:json:20171018'  
+	
+ 
+    compile 'com.squareup.okhttp:okhttp:2.5.0'
+  
+	
+	compile 'io.swagger:swagger-annotations:1.5.8'
+
+    compile 'com.squareup.okhttp:okhttp:2.7.5'
+    compile 'com.squareup.okhttp:logging-interceptor:2.7.5'
+
+ 
+	
+	
+	 compile 'io.swagger:swagger-annotations:1.5.8'
+
+
+    	// https://mvnrepository.com/artifact/com.pusher/pusher-http-java
+compile group: 'com.pusher', name: 'pusher-http-java', version: '1.0.0'
+ 
+compile group: 'com.github.alexdlaird', name: 'java8-ngrok', version: '1.4.3'
+
+
+
+
+
+
+compile 'org.openjdk.jol:jol-core:0.14'
+ 
+ 
+compile('io.github.kilmajster:ngrok-spring-boot-starter:0.3.7')
+ 
+compile group: 'commons-codec', name: 'commons-codec', version: '1.15'
+ 
+compile group: 'org.jsoup', name: 'jsoup', version: '1.13.1'
+
+ 
+compile group: 'com.codeborne', name: 'phantomjsdriver', version: '1.4.1'
+
+    
+ 
+ 
+compile group: 'org.jboss.shrinkwrap.resolver', name: 'shrinkwrap-resolver-api-maven-embedded', version: '3.1.4'
+	
+ 
+compile group: 'com.amazonaws', name: 'aws-java-sdk-rekognition', version: '1.12.226'
+    
+ 
+ compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13'
+
+        // Firebase Java SDK
+    compile 'com.google.firebase:firebase-admin:5.3.1'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.3'
+}
+
+apply from:'eclipse.gradle'
+
+idea.module.inheritOutputDirs = true

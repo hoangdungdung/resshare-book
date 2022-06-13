@@ -21,6 +21,8 @@ import com.resshare.book.ServiceListenerBookStart;
 import com.resshare.clienst.FileUploaderClient;
 import com.resshare.framework.core.service.RequestClient;
 
+import ngrok.api.model.NgrokTunnel;
+
 @SpringBootApplication(scanBasePackages = { "com.resshare" }) // same as @Configuration
 																// @EnableAutoConfiguration @ComponentScan
 														 		// combined
@@ -72,8 +74,8 @@ public class ResshareBookApp {
 						String app_name = properties.getProperty("app_name");
 						String backend_key = properties.getProperty("backend_key");
 						String ngrok = properties.getProperty("ngrok");
-						if("true".equals(ngrok))
-						backend_address = runNgok();
+ 			 	if("true".equals(ngrok))
+ 					 backend_address = runNgok();
 
 
 						Properties offsensiveProperties = StartServiceListenerCore.getConfig("offsensive.properties");
@@ -103,8 +105,11 @@ public class ResshareBookApp {
 					
 					
 					
-				final NgrokClient ngrokClient = new NgrokClient.Builder().build();
+				 final NgrokClient ngrokClient = new NgrokClient.Builder().build();
 				 final int port = StartServiceListenerCore.getPort();
+				 
+
+				    
 
 				    final CreateTunnel createTunnel = new CreateTunnel.Builder()
 				            .withAddr(port)
